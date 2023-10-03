@@ -5,7 +5,10 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">Products</div>
+                <div class="card-header">
+                    <h4>Products List</h4>
+                    <a href="{{ url('products/create') }}"> <i class="fa fa-plus-circle" aria-hidden="true"></i> Add Product</a>
+                </div>
 
                 <div class="card-body">
                     @if (session('status'))
