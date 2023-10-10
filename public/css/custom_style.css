@@ -70,3 +70,16 @@ ul.navbar-nav li {
 .nav-link:hover {
     color: #ff2d20 !important;
 }
+
+
+/* Home Page */
+.card {
+    border-radius: 4px;
+    padding: 5px !important;
+}
+
+
+/* Product's Page */
+.table-responsive>.table-bordered {
+    border-color: #dee2e6 !important;
+}
