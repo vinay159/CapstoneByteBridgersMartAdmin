@@ -23,6 +23,7 @@
                                 <th scope="col">#</th>
                                 <th scope="col">SKU</th>
                                 <th scope="col">Product Name</th>
+                                <th scope="col">Currency</th>
                                 <th scope="col">Price</th>
                                 <th scope="col">Action</th>
                             </tr>
@@ -33,6 +34,7 @@
                                     <th scope="row">{{ $data->id }}</th>
                                     <td>{{ $data->sku }}</td>
                                     <td>{{ $data->product_name }}</td>
+                                    <td>{!!  $data->currency_logo !!}</td>
                                     <td>{{ $data->price }}</td>
                                     <td></td>
                                 </tr>

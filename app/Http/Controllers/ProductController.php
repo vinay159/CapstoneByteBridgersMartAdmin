@@ -8,8 +8,6 @@ use Str;
 
 class ProductController extends Controller
 {
-    const CURRENCY_LIST = ['USD', 'CAD', 'GBP', 'EUR'];
-
     const UPLOAD_PATH = 'storage/products/images';
 
     public function index()
@@ -21,7 +19,7 @@ class ProductController extends Controller
 
     public function create()
     {
-        return view('products.create', ['currencies' => self::CURRENCY_LIST]);
+        return view('products.create', ['currencies' => array_keys(Product::CURRENCY_LIST)]);
     }
 
     public function store(Request $request)
