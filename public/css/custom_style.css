@@ -70,3 +70,7 @@ ul.navbar-nav li {
 .nav-link:hover {
     color: #ff2d20 !important;
 }
+
+.parsley-errors-list {
+    color: red;
+}
