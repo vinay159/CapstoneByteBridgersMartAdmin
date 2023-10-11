@@ -83,3 +83,7 @@ ul.navbar-nav li {
 .table-responsive>.table-bordered {
     border-color: #dee2e6 !important;
 }
+
+.parsley-errors-list {
+    color: red;
+}
