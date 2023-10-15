@@ -80,10 +80,10 @@
                                             <td>{{ $data->price }}</td>
                                             <td>{{ $data->sku }}</td>
                                             <td class="text-center" style="min-width: 90px;">
-                                                <a class="btn btn-sm btn-success active" href="https://communication.test.ideopay.in/emailMaster/edit/1">Edit</a>
+                                                <a class="btn btn-sm btn-success active" href="javascript:;">Edit</a>
                                             </td>
                                             <td class="text-center" style="min-width: 90px;">
-                                                <form class="delete-record" action="https://communication.test.ideopay.in/emailMaster/delete/1" method="post">
+                                                <form class="delete-record" action="javascript:;" method="post">
                                                     <input type="hidden" name="_method" value="delete">
                                                     <input type="hidden" name="_token" value="PsNfrRcYFHGIhUvcEzFUsiwXk9TYCzpD8M5N9Aha">
                                                     <button type="submit" class="btn btn-sm btn-danger active">Delete</button>
