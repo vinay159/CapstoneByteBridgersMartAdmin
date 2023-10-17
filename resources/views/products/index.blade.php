@@ -30,31 +30,11 @@
                         </div>
                     @endif
                         <div id="response">
+
+
                             <div class="row">
                                 <div class="col-md-12">
-                                    <div class="float-md-left py-sm-2">
-                                        Showing 1 to 10 of 50 entries
-                                    </div>
-                                    <ul class="pagination float-md-right" role="navigation">
-                                        <li class="page-item disabled" aria-disabled="true" aria-label="First">
-                                            <span class="page-link" aria-hidden="true">‹‹</span>
-                                        </li>
-                                        <li class="page-item disabled" aria-disabled="true" aria-label="« Previous">
-                                            <span class="page-link" aria-hidden="true">‹</span>
-                                        </li>
-                                        <li class="page-item active" aria-current="page"><span class="page-link">1</span></li>
-                                        <li class="page-item"><a class="page-link" href="javascript:;">2</a></li>
-                                        <li class="page-item"><a class="page-link" href="javascript:;">3</a></li>
-                                        <li class="page-item disabled" aria-disabled="true"><span class="page-link">...</span></li>
-                                        <li class="page-item"><a class="page-link" href="javascript:;">15</a></li>
-                                        <li class="page-item"><a class="page-link" href="javascript:;">16</a></li>
-                                        <li class="page-item">
-                                            <a class="page-link" href="javascript:;" rel="next" aria-label="Next »">›</a>
-                                        </li>
-                                        <li class="page-item">
-                                            <a class="page-link" href="javascript:;" rel="next" aria-label="Last">››</a>
-                                        </li>
-                                    </ul>
+                                    {{ $products->appends(Request::except('page'))->links() }}
                                 </div>
                             </div>
                             <div class="table-responsive">
@@ -98,11 +78,11 @@
                                     </tbody>
                                 </table>
                             </div>
-
-                        </div>
-
-                        <div class="d-flex justify-content-center">
-                            {!! $products->links() !!}
+                            <div class="row">
+                                <div class="col-md-12">
+                                    {{ $products->appends(Request::except('page'))->links() }}
+                                </div>
+                            </div>
                         </div>
                 </div>
             </div>
