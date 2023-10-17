@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Category;
+use Cache;
 use Illuminate\Http\Request;
 
 class CategoryController extends Controller
@@ -28,6 +29,8 @@ class CategoryController extends Controller
     {
         Category::create($request->only(['name']));
 
+        self::clearCategoryLists();
+
         return redirect()->route('category.index')->with('success', 'Category created successfully.');
     }
 
@@ -51,6 +54,8 @@ class CategoryController extends Controller
 
         $category->update($request->only(['name']));
 
+        self::clearCategoryLists();
+
         return redirect()->route('category.index')->with('success', 'Category updated successfully.');
     }
 
@@ -62,6 +67,20 @@ class CategoryController extends Controller
 
         $category->save();
 
+        self::clearCategoryLists();
+
         return redirect()->back()->with('success', 'Category updated successfully.');
+    }
+
+    public static function getCategoryLists()
+    {
+        return Cache::rememberForever('category_lists', function () {
+            return Category::where('status', 1)->pluck('name', 'id');
+        });
+    }
+
+    public static function clearCategoryLists()
+    {
+        Cache::forget('category_lists');
     }
 }

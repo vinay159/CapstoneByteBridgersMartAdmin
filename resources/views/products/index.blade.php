@@ -44,7 +44,6 @@
                                         <th>Id</th>
                                         <th>Product Name</th>
                                         <th>Product Description</th>
-                                        <th>Currency</th>
                                         <th>Price</th>
                                         <th>SKU</th>
                                         <th colspan="2" class="text-center">Action</th>
@@ -57,7 +56,6 @@
                                             <td style="min-width: 20px;">{{ $data->id }}</td>
                                             <td style="min-width: 200px; word-wrap: break-word; white-space: normal;">{{ $data->product_name }}</td>
                                             <td style="min-width: 200px; word-wrap: break-word; white-space: normal;">{{ $data->product_description }}</td>
-                                            <td>{!!  $data->currency_logo !!}</td>
                                             <td>{{ $data->price }}</td>
                                             <td>{{ $data->sku }}</td>
                                             <td class="text-center" style="min-width: 90px;">

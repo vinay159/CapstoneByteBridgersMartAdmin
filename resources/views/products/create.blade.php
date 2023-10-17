@@ -39,20 +39,24 @@
                             </div>
                             <div class="form-group">
                                 <label for="sku">SKU</label>
-                                <input type="text" readonly class="form-control" id="sku" name="sku" placeholder="" value="{{ $product->sku }}" data-parsley-required="true">
+                                <input type="text" {{ $is_edit ? 'readonly' : '' }} class="form-control" id="sku" name="sku" placeholder="" value="{{ $product->sku }}" data-parsley-required="true">
                             </div>
                             <div class="form-group">
-                                <label for="currency">Currency</label>
-                                <select id="currency" name="currency" class="form-control" data-parsley-required="true">
+                                <label for="currency">Category</label>
+                                <select id="currency" name="category_id" class="form-control" data-parsley-required="true">
                                     <option selected value="">Choose...</option>
-                                    @foreach($currencies as $currency)
-                                    <option value="{{$currency}}" {{ $product->$currency == $currency ? 'selected' : '' }}>{{$currency}}</option>
+                                    @foreach($categories as $key => $value)
+                                        <option value="{{$key}}" {{ $key == $product->category_id ? 'selected' : '' }}>{{$value}}</option>
                                     @endforeach
                                 </select>
                             </div>
                             <div class="form-group">
                                 <label for="price">Price</label>
                                 <input type="text" class="form-control" id="price" name="price" value="{{ $product->price }}" placeholder="" data-parsley-required="true" data-parsley-type="number">
+                            </div>
+                            <div class="form-group">
+                                <label for="price">Discount %</label>
+                                <input type="text" class="form-control" id="discount" name="discount" value="{{ $product->discount }}" placeholder="" data-parsley-required="false" data-parsley-range="[0,100]" data-parsley-type="number">
                             </div>
                             <div class="form-group">
                                 <label for="image">Image</label>

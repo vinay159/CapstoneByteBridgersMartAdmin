@@ -19,9 +19,11 @@ class ProductController extends Controller
 
     public function create()
     {
+        $categories = CategoryController::getCategoryLists();
+
         return view('products.create', [
-            'currencies' => array_keys(Product::CURRENCY_LIST),
             'product' => optional(),
+            'categories' => $categories,
             'is_edit' => false,
         ]);
     }
@@ -32,8 +34,9 @@ class ProductController extends Controller
             'product_name' => 'required',
             'product_description' => 'required',
             'sku' => 'required|unique:products,sku',
-            'currency' => 'required|in:USD,CAD,GBP,EUR',
+            'category_id' => 'required|exists:categories,id,status,1',
             'price' => 'required|numeric',
+            'discount' => 'sometimes|min:0|max:100',
             'image' => 'required|file|image|mimes:jpeg,png,gif,webp|max:2048',
         ]);
 
@@ -46,7 +49,7 @@ class ProductController extends Controller
 
         Product::create($validate);
 
-        return redirect()->back()->with('success', 'Product created successfully.');
+        return redirect()->route('products.index')->with('success', 'Product created successfully.');
     }
 
     public function show($id)
@@ -57,9 +60,12 @@ class ProductController extends Controller
     {
         $product = Product::findOrFail($id);
 
+        $categories = CategoryController::getCategoryLists();
+
         return view('products.create', [
             'currencies' => array_keys(Product::CURRENCY_LIST),
             'product' => $product,
+            'categories' => $categories,
             'is_edit' => true,
         ]);
     }
@@ -71,8 +77,9 @@ class ProductController extends Controller
         $validate = $this->validate($request, [
             'product_name' => 'required',
             'product_description' => 'required',
-            'currency' => 'required|in:USD,CAD,GBP,EUR',
+            'category_id' => 'required|exists:categories,id,status,1',
             'price' => 'required|numeric',
+            'discount' => 'sometimes|min:0|max:100',
             'image' => 'nullable|file|image|mimes:jpeg,png,gif,webp|max:2048',
         ]);
 

@@ -18,6 +18,7 @@ class ProductFactory extends Factory
             'product_description' => $this->faker->text(),
             'sku' => $this->faker->word(),
             'price' => 10.2,
+            'category_id' => 1,
             'image' => $this->faker->imageUrl(),
             'status' => 1,
             'created_at' => Carbon::now(),
