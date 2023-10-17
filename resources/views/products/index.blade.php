@@ -9,7 +9,7 @@
                     <div id="filter">
                         <form class="listForm" action="javascript:;" method="get">
                             <div class="row clearfix">
-                                <div class="col-md-4 font-weight-bold">Product Master - List</div>
+                                <div class="col-md-4 font-weight-bold">Products - List</div>
                                 <div class="col-md-8 text-right">
                                     <div class="col-md-1 d-inline-block px-0 mr-5"><a href="{{ route('products.create') }}" class="w-100 btn btn-sm btn-primary active">New</a></div>
                                     <input type="text" class="form-control form-control-sm col-md-4 d-inline-block" id="q" name="q" placeholder="Search" value="">
@@ -47,10 +47,11 @@
                                         <th>Currency</th>
                                         <th>Price</th>
                                         <th>SKU</th>
-                                        <th colspan="3" class="text-center">Action</th>
+                                        <th colspan="2" class="text-center">Action</th>
                                     </tr>
                                     </thead>
                                     <tbody>
+                                    @php($csrf = csrf_token())
                                     @foreach($products as $data)
                                         <tr>
                                             <td style="min-width: 20px;">{{ $data->id }}</td>
@@ -60,17 +61,18 @@
                                             <td>{{ $data->price }}</td>
                                             <td>{{ $data->sku }}</td>
                                             <td class="text-center" style="min-width: 90px;">
-                                                <a class="btn btn-sm btn-success active" href="javascript:;">Edit</a>
+                                                <a class="btn btn-sm btn-success active" href="{{ route('products.edit', $data->id) }}">Edit</a>
                                             </td>
                                             <td class="text-center" style="min-width: 90px;">
-                                                <form class="delete-record" action="javascript:;" method="post">
+                                                <form class="delete-record" action="{{ route('products.destroy', $data->id) }}" method="post">
                                                     <input type="hidden" name="_method" value="delete">
-                                                    <input type="hidden" name="_token" value="PsNfrRcYFHGIhUvcEzFUsiwXk9TYCzpD8M5N9Aha">
-                                                    <button type="submit" class="btn btn-sm btn-danger active">Delete</button>
+                                                    <input type="hidden" name="_token" value="{{ $csrf }}">
+                                                    @if($data->status == 1)
+                                                        <button type="submit" class="btn btn-sm btn-danger active">Delete</button>
+                                                    @else
+                                                        <button type="submit" class="btn btn-sm btn-primary active">Restore</button>
+                                                    @endif
                                                 </form>
-                                            </td>
-                                            <td class="text-center" style="min-width: 90px;">
-                                                <a class="btn btn-sm btn-info active" href="https://communication.test.ideopay.in/auditLogs/1/email_template_master">Logs</a>
                                             </td>
                                         </tr>
                                     @endforeach

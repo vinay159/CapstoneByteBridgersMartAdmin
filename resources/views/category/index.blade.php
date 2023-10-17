@@ -62,7 +62,7 @@
                                                     @if($data->status == 1)
                                                         <button type="submit" class="btn btn-sm btn-danger active">Delete</button>
                                                     @else
-                                                        <button type="submit" class="btn btn-sm btn-primary active">Undelete</button>
+                                                        <button type="submit" class="btn btn-sm btn-primary active">Restore</button>
                                                     @endif
                                                 </form>
                                             </td>
