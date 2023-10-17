@@ -18,6 +18,7 @@ class Product extends Model
     ];
 
     protected $fillable = [
+        'category_id',
         'slug',
         'product_name',
         'product_description',
@@ -31,6 +32,11 @@ class Product extends Model
     public function images()
     {
         return $this->hasMany(ProductImage::class);
+    }
+
+    public function category()
+    {
+        return $this->belongsTo(Category::class);
     }
 
     protected function currencyLogo(): Attribute
