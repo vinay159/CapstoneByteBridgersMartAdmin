@@ -63,7 +63,6 @@ class ProductController extends Controller
         $categories = CategoryController::getCategoryLists();
 
         return view('products.create', [
-            'currencies' => array_keys(Product::CURRENCY_LIST),
             'product' => $product,
             'categories' => $categories,
             'is_edit' => true,
