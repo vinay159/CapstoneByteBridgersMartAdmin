@@ -47,6 +47,8 @@ class ProductController extends Controller
         $validate['image'] = self::UPLOAD_PATH . '/' . $image_name;
         $validate['slug'] = Str::slug($validate['product_name']);
 
+        $validate = $request->input('discount', 0);
+
         Product::create($validate);
 
         return redirect()->route('products.index')->with('success', 'Product created successfully.');
