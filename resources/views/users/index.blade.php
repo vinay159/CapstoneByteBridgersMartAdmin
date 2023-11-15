@@ -44,6 +44,7 @@
                                         <th>Id</th>
                                         <th>Name</th>
                                         <th>Email</th>
+                                        <th colspan="2" class="text-center">Action</th>
                                     </tr>
                                     </thead>
                                     <tbody>
@@ -53,6 +54,20 @@
                                             <td style="min-width: 20px;">{{ $data->id }}</td>
                                             <td style="min-width: 200px; word-wrap: break-word; white-space: normal;">{{ $data->name }}</td>
                                             <td style="min-width: 200px; word-wrap: break-word; white-space: normal;">{{ $data->email }}</td>
+                                            <td class="text-center" style="min-width: 90px;">
+                                                <a class="btn btn-sm btn-success active" href="{{ route('users.edit', $data->id) }}">Edit</a>
+                                            </td>
+                                            <td class="text-center" style="min-width: 90px;">
+                                                <form class="delete-record" action="{{ route('users.destroy', $data->id) }}" method="post">
+                                                    <input type="hidden" name="_method" value="delete">
+                                                    <input type="hidden" name="_token" value="{{ $csrf }}">
+                                                    @if($data->status == 1)
+                                                        <button type="submit" class="btn btn-sm btn-danger active">Delete</button>
+                                                    @else
+                                                        <button type="submit" class="btn btn-sm btn-primary active">Restore</button>
+                                                    @endif
+                                                </form>
+                                            </td>
                                         </tr>
                                     @endforeach
 
