@@ -27,6 +27,10 @@ class CategoryController extends Controller
 
     public function store(Request $request)
     {
+        $this->validate($request, [
+            'name' => 'required|unique:categories,name',
+        ]);
+
         Category::create($request->only(['name']));
 
         self::clearCategoryLists();
@@ -50,6 +54,10 @@ class CategoryController extends Controller
 
     public function update(Request $request, $id)
     {
+        $this->validate($request, [
+            'name' => "required|unique:categories,name,{$id}",
+        ]);
+
         $category = Category::findOrFail($id);
 
         $category->update($request->only(['name']));
