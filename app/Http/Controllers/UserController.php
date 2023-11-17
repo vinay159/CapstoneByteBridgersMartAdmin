@@ -19,6 +19,7 @@ class UserController extends Controller
             })
             ->paginate();
 
+
         return view('users.index', compact('users'));
     }
 
@@ -51,7 +52,12 @@ class UserController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $user = User::findOrFail($id);
+
+        return view('users.create', [
+            'user' => $user,
+            'is_edit' => true,
+        ]);
     }
 
     /**
@@ -59,7 +65,22 @@ class UserController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $this->validate($request, [
+            'name' => 'required',
+            'email' => "required|unique:users,email,{$id}",
+        ]);
+
+        $user = User::findOrFail($id);
+
+        $update_data = $request->only(['name', 'email']);
+
+        if ($request->filled('password')) {
+            $update_data['password'] = bcrypt($request->input('password'));
+        }
+
+        $user->update($update_data);
+
+        return redirect()->route('users.index')->with('success', 'User updated successfully.');
     }
 
     /**
@@ -67,6 +88,12 @@ class UserController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $user = User::findOrFail($id);
+
+        $user->status = $user->status == 1 ? 0 : 1;
+
+        $user->save();
+
+        return redirect()->back()->with('success', 'User updated successfully.');
     }
 }
