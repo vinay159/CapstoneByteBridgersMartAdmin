@@ -46,7 +46,6 @@ class ProductController extends Controller
 
         $validate['image'] = self::UPLOAD_PATH . '/' . $image_name;
         $validate['slug'] = Str::slug($validate['product_name']);
-
         $validate['discount'] = $request->input('discount', 0);
 
         Product::create($validate);
@@ -93,6 +92,7 @@ class ProductController extends Controller
         }
 
         $validate['slug'] = Str::slug($validate['product_name']);
+        $validate['discount'] = $request->input('discount', 0);
 
         $product->update($validate);
 
