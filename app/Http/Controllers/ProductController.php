@@ -10,9 +10,14 @@ class ProductController extends Controller
 {
     const UPLOAD_PATH = 'storage/products/images';
 
-    public function index()
+    public function index(Request $request)
     {
-        $products = Product::latest()->paginate(10);
+        $products = Product::query()
+            ->when($request->input('q'), function ($query, $q) {
+                $query->where('product_name', 'like', '%' . $q . '%');
+            })
+            ->latest()
+            ->paginate(10);
 
         return view('products.index', compact('products'));
     }
