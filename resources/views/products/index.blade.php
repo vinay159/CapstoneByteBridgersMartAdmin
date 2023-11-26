@@ -30,8 +30,6 @@
                         </div>
                     @endif
                         <div id="response">
-
-
                             <div class="row">
                                 <div class="col-md-12">
                                     {{ $products->appends(Request::except('page'))->links() }}
