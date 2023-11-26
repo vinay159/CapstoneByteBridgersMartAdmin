@@ -7,7 +7,7 @@
             <div class="card">
                 <div class="card-header clearfix">
                     <div id="filter">
-                        <form class="listForm" action="javascript:;" method="get">
+                        <form class="listForm" action="" method="get">
                             <div class="row clearfix">
                                 <div class="col-md-4 font-weight-bold">Category - List</div>
                                 <div class="col-md-8 text-right">
