@@ -1,10 +1,12 @@
 @extends('layouts.app')
 
+<link rel="stylesheet" href="{{  asset('css/view_orders.css') }}">
+
 @section('content')
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-12">
-                <div class="card">
+                <div class="card white_bg">
                     <div class="card-header">View Orders</div>
 
                     <div class="card-body">
@@ -27,57 +29,73 @@
                         <form method="POST" action="" enctype="multipart/form-data"
                               data-parsley-validate>
                             {{ csrf_field() }}
-                            <div class="form-group">
-                                <label for="order_id">Order ID</label>
-                                <input type="text" class="form-control" id="order_id" name="order_id" readonly
-                                       value="{{ $order->order_id }}" placeholder="" data-parsley-required="true">
-                            </div>
-                            <div class="form-row">
-                                <div class="form-group col-md-6">
-                                    <label for="first_name">First Name</label>
-                                    <input type="text" class="form-control" id="first_name" name="first_name" readonly
-                                           value="{{ $order->first_name }}" placeholder="" data-parsley-required="true">
+                            <div class="row">
+                                <div class="col-12 col-sm-4">
+                                    <div class="info-box bg-light">
+                                        <div class="info-box-content">
+                                            <span class="info-box-text text-center text-muted">Order ID #</span>
+                                            <span class="info-box-number text-center text-muted mb-0">{{ $order->order_id }}</span>
+                                        </div>
+                                    </div>
                                 </div>
-                                <div class="form-group col-md-6">
-                                    <label for="last_name">Last Name</label>
-                                    <input type="text" class="form-control" id="last_name" name="last_name" readonly
-                                           value="{{ $order->last_name }}" placeholder="" data-parsley-required="true">
+                                <div class="col-12 col-sm-4">
+                                    <div class="info-box bg-light">
+                                        <div class="info-box-content">
+                                            <span class="info-box-text text-center text-muted">Order Status</span>
+                                            <span class="info-box-number text-center mb-0 dispatched">Dispatched</span>
+                                        </div>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="form-group">
-                                <label for="address">Address</label>
-                                <input type="text" class="form-control" id="address" name="address" readonly
-                                       value="{{ $order->address }}" placeholder="" data-parsley-required="true">
-                            </div>
-                            <div class="form-row">
-                                <div class="form-group col-md-6">
-                                    <label for="payment_status">Payment Status</label>
-                                    <input type="text" class="form-control" id="payment_status" name="payment_status" readonly
-                                           value="{{ $order->payment_status }}" placeholder="" data-parsley-required="true">
-                                </div>
-                                <div class="form-group col-md-6">
-                                    <label for="payment_date">Payment Date</label>
-                                    <input type="text" class="form-control" id="payment_date" name="payment_date" readonly
-                                           value="{{ is_null($order->payment_date) ? '' : $order->payment_date->toDateTimeString() }}" placeholder="" data-parsley-required="true">
+                                <div class="col-12 col-sm-4">
+                                    <div class="info-box bg-light">
+                                        <div class="info-box-content">
+                                            <span class="info-box-text text-center text-muted">Total Price</span>
+                                            <span class="info-box-number text-center text-muted mb-0">{{ $order->final_price }}</span>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
-                            <div class="form-row">
-                                <div class="form-group col-md-6">
-                                    <label for="tracking_no">Tracking No</label>
-                                    <input type="text" class="form-control" id="tracking_no" name="tracking_no" readonly
-                                           value="{{ $order->tracking_no }}" placeholder="" data-parsley-required="true">
+                            <div class="row">
+                                <div class="col-4">
+                                    <div class="card card-primary card-outline">
+                                        <div class="card-body box-profile">
+                                            <div class="text-center mb-2">
+                                                <img class="product_img img-fluid" src="{{ asset('img/macbook_air.jpg') }}" alt="product name">
+                                            </div>
+                                            <ul class="c_list-group c_list-group-unbordered mb-3">
+                                                <li class="c_list-group-item">
+                                                    <b>Product Name</b> <span class="float-right">Macbook Air 13</span>
+                                                </li>
+                                                <li class="c_list-group-item">
+                                                    <b>Quantity</b> <span class="float-right">1</span>
+                                                </li>
+                                                <li class="c_list-group-item">
+                                                    <b>Pattern/Category</b> <span class="float-right">Laptop</span>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
                                 </div>
-                                <div class="form-group col-md-6">
-                                    <label for="delivery_date">Delivery Date</label>
-                                    <input type="text" class="form-control" id="delivery_date" name="delivery_date" readonly
-                                           value="{{ is_null($order->delivery_date) ? '' : $order->delivery_date->toDateTimeString() }}" placeholder="" data-parsley-required="true">
+                                <div class="col-8">
+                                    <div class="card">
+                                        <div class="customer_info">
+                                            <h4 class="custom_title">Customer Information</h4>
+                                            <p><b>Name:</b> <span>{{ $order->first_name }}, {{ $order->last_name }}</span></p>
+                                            <p><b>Address:</b> <span>{{ $order->address }}</span></p>
+                                        </div>
+                                        <div class="pay_info">
+                                            <h4 class="custom_title">Payment Information</h4>
+                                            <p><b>Payment Status:</b> <span class="">{{ $order->payment_status }}</span></p>
+                                            <p><b>Payment Date:</b> <span>{{ is_null($order->payment_date) ? '' : $order->payment_date->toDateTimeString() }}</span></p>
+                                        </div>
+                                        <div class="deliver_info">
+                                            <p><b>Tracking No.:</b> <span>{{ $order->tracking_no }}</span></p>
+                                            <p><b>Delivery Date:</b> <span>{{ is_null($order->delivery_date) ? '' : $order->delivery_date->toDateTimeString() }}</span></p>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
-                            <div class="form-group">
-                                <label for="final_price">Total Price</label>
-                                <input type="text" class="form-control" id="final_price" name="final_price" readonly
-                                       value="{{ $order->final_price }}" placeholder="" data-parsley-required="true">
-                            </div>
+
                             <div class="form-group">
 {{--                                <button type="submit" class="btn btn-primary">Save</button>--}}
                                 <a href="{{ route('orders.index') }}" class="btn btn-danger">Back</a>

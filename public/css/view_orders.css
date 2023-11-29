@@ -1,0 +1,181 @@
+.bg-light, .bg-light>a {
+    color: #1f2d3d!important;
+}
+
+.info-box.bg-light {
+    background-color: #f8f9fa!important;
+}
+
+.info-box {
+    box-shadow: 0 0 1px rgba(0,0,0,.125), 0 1px 3px rgba(0,0,0,.2);
+    border-radius: 0.25rem;
+    background-color: #fff;
+    display: -ms-flexbox;
+    display: flex;
+    margin-bottom: 1rem;
+    min-height: 80px;
+    padding: 0.5rem;
+    position: relative;
+    width: 100%;
+}
+
+.info-box .info-box-content {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -ms-flex-pack: center;
+    justify-content: center;
+    line-height: 1.8;
+    -ms-flex: 1;
+    flex: 1;
+    padding: 0 10px;
+    overflow: hidden;
+}
+
+.info-box .info-box-text, .info-box .progress-description {
+    display: block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.text-muted {
+    color: #6c757d!important;
+}
+.text-center {
+    text-align: center!important;
+}
+
+.info-box .info-box-number {
+    display: block;
+    margin-top: 0.25rem;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+
+.dispatched {
+    color: #0b5ed7 !important;
+}
+
+.declined {
+    color: red;
+}
+
+.pay_progress, .delivered {
+    color: #558B2F;
+}
+
+/* Products styling */
+.card-primary.card-outline {
+    border-top: 3px solid #007bff;
+}
+
+.mb-3, .my-3 {
+    margin-bottom: 1rem!important;
+}
+dl, ol, ul {
+    margin-top: 0;
+    margin-bottom: 1rem;
+}
+
+.c_list-group {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    padding-left: 0;
+    margin-bottom: 0;
+    border-radius: 0.25rem;
+    margin-top: 28px;
+}
+
+.c_list-group-unbordered>.c_list-group-item {
+    border-left: 0;
+    border-radius: 0;
+    border-right: 0;
+    padding-left: 0;
+    padding-right: 0;
+}
+
+.c_list-group-item {
+    position: relative;
+    display: block;
+    padding: 0.75rem 1.25rem;
+    /*background-color: #fff;*/
+    border: 1px solid rgba(0,0,0,.125);
+}
+
+.float-right {
+    float: right!important;
+}
+
+a {
+    color: #007bff;
+    text-decoration: none;
+    background-color: transparent;
+}
+
+
+img {
+    vertical-align: middle;
+    border-style: none;
+}
+.img-fluid {
+    max-width: 100%;
+    height: auto;
+}
+.img-circle {
+    border-radius: 50%;
+}
+
+.product_img {
+    border: 3px solid #adb5bd;
+    margin: 0 auto;
+    padding: 3px;
+    width: 200px;
+}
+.profile-username {
+    font-size: 21px;
+    margin-top: 5px;
+}
+
+.card {
+    box-shadow: 0 0 1px rgba(0,0,0,.125), 0 1px 3px rgba(0,0,0,.2);
+    margin-bottom: 1rem;
+}
+
+.card {
+    position: relative;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    background-color: #fff;
+    background-clip: border-box;
+    border: 0 solid rgba(0,0,0,.125);
+    border-radius: 0.25rem;
+}
+
+.card-body {
+    -ms-flex: 1 1 auto;
+    flex: 1 1 auto;
+    min-height: 1px;
+    padding: 1.25rem;
+}
+
+.customer_info, .pay_info, .deliver_info {
+    border-bottom: 1px solid #adb5bd;
+    padding: 20px;
+}
+
+.deliver_info {
+    border: 0px;
+}
+
+.white_bg {
+    background: #fff !important;
+}
