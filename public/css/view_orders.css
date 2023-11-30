@@ -131,10 +131,10 @@ img {
 }
 
 .product_img {
-    border: 3px solid #adb5bd;
-    margin: 0 auto;
+    border: 3px solid #dae0e73d;
     padding: 3px;
     width: 200px;
+    border-radius: 5px;
 }
 .profile-username {
     font-size: 21px;
@@ -168,8 +168,8 @@ img {
 }
 
 .customer_info, .pay_info, .deliver_info {
-    border-bottom: 1px solid #adb5bd;
-    padding: 20px;
+    /*border-bottom: 1px solid #adb5bd;*/
+    padding: 20px 0;
 }
 
 .deliver_info {
@@ -178,4 +178,54 @@ img {
 
 .white_bg {
     background: #fff !important;
+}
+
+.order_list_wrapper {
+    vertical-align: middle;
+    flex-direction: row;
+    align-items: center;
+    margin-bottom: 30px;
+    border-bottom: 2px solid #cccccc26;
+    padding-bottom: 30px;
+}
+
+.order_list_wrapper p {
+    margin-bottom: 5px;
+}
+
+.order_list_wrapper p span {
+    font-weight: bold;
+    padding-left: 5px;
+}
+
+.vo_title {
+    font-weight: bold;
+}
+
+.declined, .failed {
+    color: red;
+}
+
+.success, .pay_progress, .delivered {
+    color: #61cb17;
+}
+
+
+.custom_row {
+    padding: 10px 12px;
+}
+.custom_card {
+    display: flex;
+    box-shadow: 0 0 1px rgba(0,0,0,.125), 0 1px 3px rgba(0,0,0,.2);
+    margin-bottom: 20px;
+    border-radius: 5px;
+    background: #f8f9fa;
+}
+
+.custom_card p {
+    margin-bottom: 5px;
+}
+.custom_card p span {
+    font-weight: bold;
+    padding-left: 5px;
 }

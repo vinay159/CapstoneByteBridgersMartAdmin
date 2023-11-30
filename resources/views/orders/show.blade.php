@@ -4,10 +4,10 @@
 
 @section('content')
     <div class="container">
-        <div class="row justify-content-center">
+        <div class="row mt-5 justify-content-center">
             <div class="col-md-12">
                 <div class="card white_bg">
-                    <div class="card-header">View Orders</div>
+                    <div class="card-header"><h3 class="vo_title">Your Orders</h3></div>
 
                     <div class="card-body">
                         @if (session('success'))
@@ -50,54 +50,81 @@
                                     <div class="info-box bg-light">
                                         <div class="info-box-content">
                                             <span class="info-box-text text-center text-muted">Total Price</span>
-                                            <span class="info-box-number text-center text-muted mb-0">{{ $order->final_price }}</span>
+                                            <span class="info-box-number text-center text-muted mb-0">${{ $order->final_price }}</span>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            <div class="row">
-                                <div class="col-4">
-                                    <div class="card card-primary card-outline">
-                                        <div class="card-body box-profile">
-                                            <div class="text-center mb-2">
-                                                <img class="product_img img-fluid" src="{{ asset('img/macbook_air.jpg') }}" alt="product name">
-                                            </div>
-                                            <ul class="c_list-group c_list-group-unbordered mb-3">
-                                                <li class="c_list-group-item">
-                                                    <b>Product Name</b> <span class="float-right">Macbook Air 13</span>
-                                                </li>
-                                                <li class="c_list-group-item">
-                                                    <b>Quantity</b> <span class="float-right">1</span>
-                                                </li>
-                                                <li class="c_list-group-item">
-                                                    <b>Pattern/Category</b> <span class="float-right">Laptop</span>
-                                                </li>
-                                            </ul>
+                            <div class="row custom_row">
+                                <div class="custom_card">
+                                    <div class="col-5">
+                                        <div class="customer_info">
+                                            <p>Name: <span>{{ $order->first_name }}, {{ $order->last_name }}</span></p>
+                                            <p>Address: <span>{{ $order->address }}</span></p>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="col-8">
-                                    <div class="card">
-                                        <div class="customer_info">
-                                            <h4 class="custom_title">Customer Information</h4>
-                                            <p><b>Name:</b> <span>{{ $order->first_name }}, {{ $order->last_name }}</span></p>
-                                            <p><b>Address:</b> <span>{{ $order->address }}</span></p>
-                                        </div>
+                                    <div class="col-4">
                                         <div class="pay_info">
-                                            <h4 class="custom_title">Payment Information</h4>
-                                            <p><b>Payment Status:</b> <span class="">{{ $order->payment_status }}</span></p>
-                                            <p><b>Payment Date:</b> <span>{{ is_null($order->payment_date) ? '' : $order->payment_date->toDateTimeString() }}</span></p>
+                                            <p>Payment Status: <span class="{{ $order->payment_status }}">{{ $order->payment_status }}</span></p>
+                                            <p>Payment Date: <span>{{ is_null($order->payment_date) ? '' : $order->payment_date->toDateTimeString() }}</span></p>
                                         </div>
+                                    </div>
+                                    <div class="col-3">
                                         <div class="deliver_info">
-                                            <p><b>Tracking No.:</b> <span>{{ $order->tracking_no }}</span></p>
-                                            <p><b>Delivery Date:</b> <span>{{ is_null($order->delivery_date) ? '' : $order->delivery_date->toDateTimeString() }}</span></p>
+                                            <p>Tracking No.: <span>{{ $order->tracking_no }}</span></p>
+                                            <p>Delivery Date: <span>{{ is_null($order->delivery_date) ? '' : $order->delivery_date->toDateTimeString() }}</span></p>
                                         </div>
                                     </div>
                                 </div>
                             </div>
 
+                            <div class="table-responsive">
+                                <table class="table table-hover table-striped table-bordered">
+                                    <thead class="thead-light">
+                                    <tr>
+                                        <th>Product Name</th>
+                                        <th>Quantity</th>
+                                        <th>Price</th>
+                                        <th>Total Price</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr>
+                                        <td>Macbook Air 13</td>
+                                        <td>1</td>
+                                        <td>$1589.55</td>
+                                        <td>$1580.55</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Macbook Air 13</td>
+                                        <td>1</td>
+                                        <td>$1589.55</td>
+                                        <td>$1580.55</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Macbook Air 13</td>
+                                        <td>1</td>
+                                        <td>$1589.55</td>
+                                        <td>$1580.55</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Macbook Air 13</td>
+                                        <td>1</td>
+                                        <td>$1589.55</td>
+                                        <td>$1580.55</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Macbook Air 13</td>
+                                        <td>1</td>
+                                        <td>$1589.55</td>
+                                        <td>$1580.55</td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+
+
                             <div class="form-group">
-{{--                                <button type="submit" class="btn btn-primary">Save</button>--}}
                                 <a href="{{ route('orders.index') }}" class="btn btn-danger">Back</a>
                             </div>
                         </form>
