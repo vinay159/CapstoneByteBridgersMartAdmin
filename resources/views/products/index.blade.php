@@ -44,7 +44,7 @@
                                         <th>Product Description</th>
                                         <th>Price</th>
                                         <th>SKU</th>
-                                        <th colspan="2" class="text-center">Action</th>
+                                        <th colspan="3" class="text-center">Action</th>
                                     </tr>
                                     </thead>
                                     <tbody>
@@ -69,6 +69,9 @@
                                                         <button type="submit" class="btn btn-sm btn-primary active">Restore</button>
                                                     @endif
                                                 </form>
+                                            </td>
+                                            <td class="text-center" style="min-width: 90px;">
+                                                <a class="btn btn-sm btn-info active" href="#">View Reviews</a>
                                             </td>
                                         </tr>
                                     @endforeach
