@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Product;
+use App\Models\ProductReview;
 use Illuminate\Http\Request;
 use Str;
 
@@ -60,6 +61,20 @@ class ProductController extends Controller
 
     public function show($id)
     {
+        $product = Product::findOrFail($id);
+
+        $product->load('reviews.user');
+
+        $reviews = ProductReview::query()
+            ->where('product_id', $id)
+//            ->where('status', 1)
+            ->latest()
+            ->paginate(10);
+
+        return view('products.reviews',[
+            'product' => $product,
+            'reviews' => $reviews,
+        ]);
     }
 
     public function edit($id)
