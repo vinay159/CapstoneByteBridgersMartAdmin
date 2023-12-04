@@ -89,35 +89,17 @@
                                     </tr>
                                     </thead>
                                     <tbody>
+                                    @foreach($order->items as $item)
+                                        <tr>
+                                            <td>{{ $item->product->product_name }}</td>
+                                            <td>{{ $item->quantity }}</td>
+                                            <td>${{ $item->price }}</td>
+                                            <td>${{ $item->quantity * $item->price }}</td>
+                                        </tr>
+                                    @endforeach
                                     <tr>
-                                        <td>Macbook Air 13</td>
-                                        <td>1</td>
-                                        <td>$1589.55</td>
-                                        <td>$1580.55</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Macbook Air 13</td>
-                                        <td>1</td>
-                                        <td>$1589.55</td>
-                                        <td>$1580.55</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Macbook Air 13</td>
-                                        <td>1</td>
-                                        <td>$1589.55</td>
-                                        <td>$1580.55</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Macbook Air 13</td>
-                                        <td>1</td>
-                                        <td>$1589.55</td>
-                                        <td>$1580.55</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Macbook Air 13</td>
-                                        <td>1</td>
-                                        <td>$1589.55</td>
-                                        <td>$1580.55</td>
+                                        <td colspan="3" align="center"><strong>Total</strong></td>
+                                        <td><strong>{{ $order->final_price }}</strong></td>
                                     </tr>
                                     </tbody>
                                 </table>

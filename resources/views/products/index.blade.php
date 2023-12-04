@@ -71,7 +71,7 @@
                                                 </form>
                                             </td>
                                             <td class="text-center" style="min-width: 90px;">
-                                                <a class="btn btn-sm btn-info active" href="#">View Reviews</a>
+                                                <a class="btn btn-sm btn-info active" href="{{ route('products.show', $data->id) }}">View Reviews</a>
                                             </td>
                                         </tr>
                                     @endforeach
